@@ -155,7 +155,7 @@ nav.scrolled {
     font-family:'Montserrat'; 
     }
 .logo img {
-    width: 130px;
+    width: 110px;
     min-width: 100px;
     max-width:150px;
 }
@@ -521,8 +521,14 @@ SECTIONS
 section {
     padding:72px 0;
 }
+
+
+/************************************************************************************************
+SECTIONS - ABOUT US
+*************************************************************************************************/
+
 .eyebrow {
-    color:var(--brand);
+    color: red;
     font-weight:700;
     letter-spacing:2px;
     font-size:13px;
@@ -533,10 +539,84 @@ h2 {
     line-height:1.2;
     margin:8px 0 16px;
 }
-.lead {
-    max-width:760px;
-    color:var(--muted);
+.about h2 {
+    max-width:560px;
+    color : rgb(3, 53, 87);
 }
+.lead {
+    max-width:560px;
+    color: black;
+}
+.lead span {
+    color:red;
+    font-weight:700;
+}
+
+.about .wrap {
+    display: flex;
+    gap: 20px;
+    position: relative;
+  
+}
+.about img {
+    min-width: 300px;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+}
+
+
+/************************************************************************************************
+SECTIONS - ABOUT US - MISSION, VISION, VALUES
+*************************************************************************************************/
+.mvv {
+    padding: 0; 
+    background:var(--paper-2);
+}
+.mvv-grid {
+    display:grid; 
+    grid-template-columns:repeat(3,1fr); 
+    gap:20px; 
+    background: transparent; 
+    overflow:hidden; 
+}
+.mvv-col {
+    background:#fff; 
+    padding:38px 32px;
+    border: 2px solid rgba(15, 68, 112, 0.274);
+    border-radius: 15px;
+}
+.mvv-col h3 {
+    font-size:1.15rem; 
+    margin-bottom:14px;
+}
+.mvv-col p {
+    color:var(--ink-soft); 
+    font-size:0.95rem;
+}
+.mvv-col ul {
+    margin-top:6px; 
+    display:grid; 
+    gap:10px;
+    list-style: disc;
+}
+.mvv-col li {
+    font-size:0.95rem; 
+    color:var(--ink-soft); 
+    display:flex; 
+    gap:10px;
+}
+.mvv-col li .sq {
+    width:7px; 
+    height:7px; 
+    background:var(--blue); 
+    margin-top:7px; 
+    border-radius:1px; 
+    flex-shrink:0;
+}
+
+
+
 .alt { 
     background:var(--surface);
 }

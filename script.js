@@ -14,6 +14,7 @@
   hero.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>40)go(d<0?i+1:i-1);x0=null;});
   go(0);
 })();
+
 document.getElementById('f').addEventListener('submit',function(e){
   e.preventDefault();
   var d=new FormData(e.target);
