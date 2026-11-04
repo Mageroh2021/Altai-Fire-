@@ -542,10 +542,11 @@ h2 {
 .about h2 {
     max-width:560px;
     color : rgb(3, 53, 87);
+    margin-bottom: 20px;
 }
 .lead {
-    max-width:560px;
-    color: black;
+    max-width:500px;
+    color: rgb(30, 43, 49);
 }
 .lead span {
     color:red;
@@ -558,52 +559,72 @@ h2 {
     position: relative;
   
 }
-.about img {
-    min-width: 300px;
-    width: 100%;
-    max-width: 800px;
-    border-radius: 12px;
+.about-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.about img {
+    margin-top: -10px;
+    min-width: 200px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+.about-img:hover img {
+    transform: scale(1.2);
+} 
 
 
 /************************************************************************************************
 SECTIONS - ABOUT US - MISSION, VISION, VALUES
 *************************************************************************************************/
 .mvv {
-    padding: 0; 
-    background:var(--paper-2);
+    padding: 20px 30px; 
+    background: var(--dark-navy);
+    justify-content:center;
+    height: 100%;
 }
 .mvv-grid {
     display:grid; 
     grid-template-columns:repeat(3,1fr); 
-    gap:20px; 
+    justify-items:center;
     background: transparent; 
     overflow:hidden; 
+    justify-content:center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 100%;
 }
 .mvv-col {
     background:#fff; 
-    padding:38px 32px;
-    border: 2px solid rgba(15, 68, 112, 0.274);
+    padding:15px 20px;
+    max-width: 300px;
+    border: 1px solid rgba(61, 95, 122, 0.178);
     border-radius: 15px;
+    box-shadow: 2px 2px  rgba(166, 210, 230, 0.247);
 }
 .mvv-col h3 {
     font-size:1.15rem; 
     margin-bottom:14px;
 }
 .mvv-col p {
-    color:var(--ink-soft); 
-    font-size:0.95rem;
+    color: rgb(30, 43, 49); 
+    font-size:0.85rem;
 }
 .mvv-col ul {
     margin-top:6px; 
     display:grid; 
     gap:10px;
-    list-style: disc;
+    margin-left: 20px;
+    list-style-type: disc;
 }
 .mvv-col li {
-    font-size:0.95rem; 
-    color:var(--ink-soft); 
-    display:flex; 
+    font-size:0.85rem; 
+    color:  rgb(30, 43, 49); 
     gap:10px;
 }
 .mvv-col li .sq {
@@ -614,7 +635,16 @@ SECTIONS - ABOUT US - MISSION, VISION, VALUES
     border-radius:1px; 
     flex-shrink:0;
 }
-
+.mvv-col h3 {
+    font-size:1.15rem; 
+    margin-bottom:14px;
+    color: red;
+}
+.mvv-col img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
 
 
 .alt { 
