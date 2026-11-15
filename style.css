@@ -269,7 +269,7 @@ nav a:hover{
   left: 0;
   min-width: 220px;
   margin: 0;
-  padding: 10px 0;
+  padding: 5px 0;
   list-style: none;
   background: #fff;
   border-radius: 8px;
@@ -298,16 +298,50 @@ nav a:hover{
 }
 
 /* Show dropdown on hover or keyboard focus */
-.nav-links .dropdown:hover .dropdown-menu,
-.nav-links .dropdown:focus-within .dropdown-menu {
+/* Keep the Products menu open while the pointer is anywhere inside it */
+.nav-links > .dropdown:hover > .dropdown-menu,
+.nav-links > .dropdown:focus-within > .dropdown-menu {
   display: block;
+}
+
+
+/* Nested submenus appear below their parent item */
+.dropdown-menu .dropdown > .dropdown-menu {
+  top: 100%;
+  left: 0;
 }
 
 .nav-links .dropdown:hover .dropdown-arrow {
   transform: rotate(180deg);
 }
 
+/* Each product category anchors its side submenu */
+.nav-links > .dropdown > .dropdown-menu > .dropdown {
+  position: relative;
+}
 
+/* Nested submenu: hidden by default, opens to the side */
+.nav-links > .dropdown > .dropdown-menu > .dropdown > .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  min-width: 180px;
+  margin: 0;
+  padding: 10px 0;
+  list-style: none;
+  background: #fff;
+  border-top: 3px solid #e30613;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  z-index: 1001;
+}
+
+/* Show only the hovered or keyboard-focused category's submenu */
+.nav-links > .dropdown > .dropdown-menu > .dropdown:hover > .dropdown-menu,
+.nav-links > .dropdown > .dropdown-menu > .dropdown:focus-within > .dropdown-menu {
+  display: block;
+}
 .btn {
     display:inline-block;
     padding:13px 26px;
@@ -755,7 +789,7 @@ input,select,textarea {
     font:inherit;
 }
 .contact-section {
-    background: url(./assets/images/contact3.jpg) no-repeat center center/cover;
+    background: url(./assets/images/contact3.jpggit ) no-repeat center center/cover;
     color:#fff;
     position:relative;
     overflow:hidden;
