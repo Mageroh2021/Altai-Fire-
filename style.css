@@ -67,11 +67,11 @@ TOP BAR
     background:var(--dark-navy);
     color: white;
 }
+
 .topbar .wrap {
-    display:flex;
+    display: flex;
     gap:20px;
-    justify-content:flex-end;
-    flex-wrap:wrap;
+    justify-content: space-between;
     padding-top:10px;
     padding-bottom:10px;
 }
@@ -85,6 +85,93 @@ TOP BAR
     height:16px;
     margin-right:8px;
     vertical-align:middle;
+}
+.topbar-left {
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+.topbar-right {
+    display:flex;
+    position:relative;
+    gap:20px;
+}
+
+/*************************************** Search Bar *********************************************/
+.searchBox {
+    position: absolute;
+    display: flex;
+    right: 100%;
+    top: -4px;
+    background: var(--surface);
+    height: 30px;
+    border-radius: 30px;
+    padding: 0;
+}
+.searchBox:hover > .searchInput {
+    width: 240px;
+    padding: 0 6px;
+}
+.searchBox:hover > .searchButton {
+    background: var(--brand);
+    color: #fff;
+}
+.searchInput {
+    position: relative;
+    top: -4px;
+    border: 0;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: #023042;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 30px;
+    font-weight: 500;
+    width: 0px;
+}
+.searchInput::placeholder {
+    color: #7e9baa;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    top: 0;
+}
+.searchButton {
+    position: relative;
+    top: 0;
+    color: var(--text);
+    float: left;
+    width: 30px;
+    border-radius: 50%;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+@media screen and (max-width: 620px) {
+.searchBox:hover > .searchInput {
+    width: 150px;
+    padding: 0 6px;
+}
+}
+.topbar-right {
+    position:relative;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+.topbar-right .social-links {
+    margin-left: 20px;
+    display:flex;
+    gap:12px;
+}
+.topbar-right .social-links a {
+    color:white;
+    font-size:14px;
+    font-weight:600;
 }
 
 /************************************************************************************************
@@ -692,10 +779,15 @@ SECTIONS - ABOUT US - MISSION, VISION, VALUES
 
 }
 .card {
-    background:var(--bg);
+    background: #fffefee8;
     border:1px solid var(--line);
     border-radius:10px;
     padding:28px;
+}
+.products {
+    background: url(./assets/images/prod-bg.jpeg);
+    background-size: cover;
+    background-position: center;
 }
 .alt .card {
     background:var(--bg);
