@@ -640,7 +640,7 @@ SECTIONS
 *************************************************************************************************/
 
 section {
-    padding:72px 0;
+    padding:80px 0;
 }
 
 
@@ -649,11 +649,21 @@ SECTIONS - ABOUT US
 *************************************************************************************************/
 
 .eyebrow {
-    color: red;
-    font-weight:700;
-    letter-spacing:2px;
-    font-size:13px;
-    text-transform:uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    color: #ed1c24;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.eyebrow::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #ed1c24;
 }
 h2 {
     font-size:clamp(26px,3.6vw,38px);
@@ -668,6 +678,11 @@ h2 {
 .lead {
     max-width:500px;
     color: rgb(30, 43, 49);
+}
+.lead-1 {
+    max-width:80%;
+    color: rgb(30, 43, 49);
+    margin-bottom: 20px;
 }
 .lead span {
     color:red;
@@ -703,10 +718,62 @@ h2 {
 SECTIONS - ABOUT US - MISSION, VISION, VALUES
 *************************************************************************************************/
 .mvv {
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
     padding: 20px 30px; 
-    background: var(--dark-navy);
     justify-content:center;
     height: 100%;
+}
+.mvv-flame-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.mvv-flame-bg svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.flame {
+    fill: none;
+    stroke: url(#fireGradient);
+    stroke-linecap: round;
+    stroke-width: 12;
+    opacity: 0.22;
+    filter: blur(2px);
+    stroke-dasharray: 35 18;
+}
+
+.flame-one {
+    animation: flameMove 18s linear infinite;
+}
+
+.flame-two {
+    stroke-width: 7;
+    opacity: 0.16;
+    animation: flameMove 24s linear infinite reverse;
+}
+
+.flame-three {
+    stroke-width: 5;
+    opacity: 0.13;
+    animation: flameMove 30s linear infinite;
+}
+
+@keyframes flameMove {
+    to {
+        stroke-dashoffset: -500;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flame {
+        animation: none;
+    }
 }
 .mvv-grid {
     display:grid; 
@@ -759,7 +826,11 @@ SECTIONS - ABOUT US - MISSION, VISION, VALUES
 .mvv-col h3 {
     font-size:1.15rem; 
     margin-bottom:14px;
-    color: red;
+    color: var(--dark-navy);
+}
+.mvv-col p {
+    color: rgb(32, 45, 53); 
+    font-size:0.85rem;
 }
 .mvv-col img {
     width: 30px;
@@ -768,8 +839,13 @@ SECTIONS - ABOUT US - MISSION, VISION, VALUES
 }
 
 
-.alt { 
-    background:var(--surface);
+
+/************************************************************************************************
+SECTIONS - PRODUCTS
+*************************************************************************************************/
+
+.products h2 {
+    color:var(--dark-navy);
 }
 .grid {
     display:grid;
@@ -779,24 +855,252 @@ SECTIONS - ABOUT US - MISSION, VISION, VALUES
 
 }
 .card {
-    background: #fffefee8;
+    background: #ffffffc2;
     border:1px solid var(--line);
     border-radius:10px;
     padding:28px;
 }
 .products {
-    background: url(./assets/images/prod-bg.jpeg);
+    background: linear-gradient(
+            90deg,
+            rgba(238, 244, 247, 0.952) 0%,
+            rgba(230, 235, 240, 0.76) 35%,
+            rgba(101, 135, 155, 0.233) 65%,
+            rgba(255, 255, 255, 0.014) 100%
+        ),
+    url(./assets/images/prod-bg1.png);
     background-size: cover;
     background-position: center;
 }
-.alt .card {
-    background:var(--bg);
+.products p {
+    color: var(--dark-navy);
 }
+
+/************************************************************************************************
+SECTIONS - APPLICATIONS
+*************************************************************************************************/
+.alt { 
+    background: white;
+    position:relative;
+}
+.alt h2 {
+    color:var(--dark-navy);
+}
+.alt .card {
+    background: white;
+}
+/* applications cards start  */
+
+/* Horizontal scrolling track */
+.application-slider {
+  display: grid;
+  grid-auto-columns: calc((100% - 48px) / 3);
+  grid-auto-flow: column;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 4px 2px 12px;
+  overscroll-behavior-x: contain;
+}
+
+.application-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual card */
+.application-card {
+  min-width: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e6edf1;
+  border-radius: 12px;
+  scroll-snap-align: start;
+  box-shadow: 0 4px 16px rgba(20, 52, 70, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.application-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(20, 52, 70, 0.10);
+}
+
+.application-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  padding: 16px;
+  background: #edf3f6;
+  overflow: hidden;
+}
+
+.application-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+  border-radius: 8px;
+}
+
+.application-card:hover .application-image img {
+  transform: scale(1.05);
+}
+
+.application-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #086986;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.application-info {
+  padding: 22px;
+}
+
+.application-category {
+  color: #086986;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.application-info h3 {
+  margin: 10px 0;
+  color: var(--dark-navy);
+  font-size: 19px;
+  line-height: 1.4;
+}
+
+.application-info p {
+  min-height: 72px;
+  margin: 0 0 18px;
+  color: #466b81;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.application-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #086986;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .application-slider {
+    grid-auto-columns: calc((100% - 24px) / 2);
+    gap: 24px;
+  }
+
+  .applications-section {
+    padding: 60px 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .applications-section {
+    padding: 45px 0;
+  }
+
+  .applications-heading {
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .applications-heading h2 {
+    font-size: 26px;
+  }
+
+  .applications-heading p {
+    font-size: 13px;
+  }
+
+  .application-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .application-slider {
+    grid-auto-columns: 82%;
+    gap: 16px;
+  }
+
+  .application-info {
+    padding: 18px;
+  }
+
+  .application-info h3 {
+    font-size: 17px;
+  }
+
+  .application-info p {
+    min-height: 0;
+  }
+
+  .application-slider-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .application-slider {
+    scroll-behavior: auto;
+  }
+  .application-card,
+  .application-image img,
+  .application-arrow,
+  .application-progress-bar {
+    transition: none;
+  }
+}
+/* KEEP READ MORE BUTTON CONSISTENT */
+.application-link.read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: red;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.application-link.read-more-btn:hover {
+    color: #fa0101;
+    border: 1px solid red;
+    border-radius: 8px;
+    padding: 4px 12px;
+}
+
+
+/* applications cards end */
 .card .ic {
     width:46px;
     height:46px;
     border-radius:10px;
-    background:linear-gradient(135deg,var(--brand),var(--brand2));
+    background: red;
     display:grid;
     place-items:center;
     font-size:22px;
@@ -804,13 +1108,14 @@ SECTIONS - ABOUT US - MISSION, VISION, VALUES
 }
 .card h3 {
     margin:0 0 8px;
+    color:var(--dark-navy);
 }
 .card p {
     margin:0 0 14px;
-    color:var(--muted);
+    color: #1f506b;
 }
 .card a.more {
-    color:var(--brand);
+    color: red;
     font-weight:700;
     font-size:14px;
 }
@@ -836,6 +1141,35 @@ SECTIONS - ABOUT US - MISSION, VISION, VALUES
     text-align:center;
     padding:20px;
 }
+
+/* Trusted by Industries */
+.partner-logos h3 {
+    color:var(--dark-navy);
+    margin-top: 20px;
+    text-align: center;
+}
+.prt-logo {
+    max-width: 200px;
+    max-height: 100px;
+    border: 2px solid red;
+}
+.prt-logo img {
+    max-width: 150px;
+}
+
+/************************************************************************************************
+SECTIONS - SERVICES & SUPPORT
+*************************************************************************************************/
+.services h2 {
+    color:var(--dark-navy);
+}
+
+
+
+
+
+
+
 .logos {
     display:flex;
     flex-wrap:wrap;
